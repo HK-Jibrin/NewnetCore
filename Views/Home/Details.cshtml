@@ -1,0 +1,47 @@
+﻿@model HomeDetailsViewModels
+
+@{
+    ViewBag.Title = "Person Details";
+    var photoPath = "~/Images/" + Model.PersonsP.PhotoPath ?? "adminuser.png";
+}
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.PersonsP.Name</h1>  
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" width ="10" />
+                <h3>PersonsP Name: @Model.PersonsP.Id</h3>
+                <h3>PersonsP Task: @Model.PersonsP.Task</h3>
+                <h3>PersonsP Date: @Model.PersonsP.Date</h3>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a  asp-action="edit" asp-controller="home" asp-route-id="@Model.PersonsP.Id" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+ <script src="~/js/CoustorScript.js"></script>
+}
+
+
+
+
+
+
+@*<h1>@Model.PageTitle</h1>
+
+    <div>
+        Name:@Model.PersonsP.Name
+    </div>
+    <div>
+        Task:@Model.PersonsP.Task
+    </div>
+    <div>
+        Date:@Model.PersonsP.Date
+    </div>*@
+

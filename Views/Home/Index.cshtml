@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PersonsP>
+
+@{
+   
+    ViewBag.Title = "Person Details";
+}
+
+
+    <div class="card-deck">
+        @if (Model.Any())
+        {
+            foreach (var PersonsP in Model)
+            {
+                var photoPath = "~/Images/" + PersonsP.PhotoPath ?? "adminuser.png";
+
+                <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
+                    <div class="card-header">
+                        <h2>@PersonsP.Name</h2>
+                    </div>
+                    <img class="card-img-top" src="@photoPath" asp-append-version="true" width="10" />
+                    <div class="text-center">
+                        <a asp-controller="home" asp-action="details" asp-route-id="@PersonsP.Id" class="btn btn-primary m-1">View</a>
+                        <a asp-action="edit" asp-controller="home" asp-route-id="@PersonsP.Id" class="btn btn-primary m-1 ">Edit</a>
+                        <a href="#" class="btn btn-danger m-1">Delete</a>
+                    </div>
+                </div>
+            }  
+        }
+        else
+        {
+            <div>no records</div>
+        }
+    </div>
+@*<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Task</td>
+            <td>Date</td>
+        </tr>
+    </thead>
+    <tbody>
+      
+        {
+            <tr>
+                <td>@PersonsP.Id</td>
+                <td>@PersonsP.Name</td>
+                <td>@PersonsP.Task</td>
+                <td>@PersonsP.Date</td>
+            </tr>
+        }
+    </tbody>
+
+</table>*@
+
